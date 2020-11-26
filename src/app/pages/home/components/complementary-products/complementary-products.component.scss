@@ -1,0 +1,46 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+#ComplementarySection {
+  padding: 80px 0;
+
+  #SmsMessagingApi {
+    padding-bottom: 40px;
+  }
+
+  .marketing-subheader, .marketing-text {
+    font-weight: 600;
+  }
+
+  .marketing-header {
+    margin-bottom: 30px;
+  }
+
+  .marketing-subheader {
+    margin: 30px 0;
+    font-weight: 600;
+
+    &.on2lines{
+      min-height: 70px;
+    }
+  }
+
+  .marketing-text {
+    font-weight: 600;
+  }
+
+  .row {
+    position: relative;
+    z-index: 2;
+  }
+
+
+  .container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .voice-description {
+    min-height: 90px;
+  }
+}

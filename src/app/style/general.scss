@@ -1,0 +1,77 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "fonts";
+@import "vars";
+@import "animations";
+@import "helpers";
+@import "tocify";
+@import "~highlight.js/scss/default";
+@import "~highlight.js/scss/github";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: $font-size;
+  color: $text_color;
+  position: relative;
+  //background-color: $body_white_background;
+
+  img {
+    max-width: 100%;
+  }
+
+  a, .link {
+    color: $cm_green;
+  }
+
+  .marketing-section-title {
+    font-size: $font-section-title;
+    margin-bottom: 80px;
+    font-weight: $semi_bold;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      font-size: $font-section-title-smaller;
+    }
+  }
+
+  .marketing-subtitle {
+    font-size: $font-marketing-subtitle;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      font-size: $font-marketing-subtitle-smaller;
+    }
+  }
+
+  .marketing-subheader {
+    font-size: $font-marketing-subheader;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      font-size: $font-marketing-subheader-smaller;
+    }
+  }
+
+  .marketing-description {
+    font-size: 1.1rem;
+  }
+
+  .marketing-text {
+    color: $marketing_text_color;
+  }
+
+  h1.page-title {
+    font-size: $font-marketing-subtitle;
+    color: $landing_white;
+    font-weight: normal;
+  }
+
+  .page-title-holder {
+    background-color: $landing_bg;
+    margin-bottom: 20px;
+    padding: 20px 0;
+  }
+}

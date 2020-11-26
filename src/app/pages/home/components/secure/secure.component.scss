@@ -1,0 +1,37 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+#SecureSection {
+    background: $landing_bg_gray;
+    padding: 80px 0;
+    text-align: center;
+
+    .marketing-section-title {
+      margin-bottom: 10px;
+    }
+
+    .marketing-subheader {
+      margin-bottom: 30px;
+    }
+
+    img {
+    }
+
+    .big-icon {
+      border-color: white;
+      line-height: 150px;
+    }
+
+    .secure-features-holder {
+      margin: 40px 0;
+
+      .secure-feature {
+        margin-top: 20px;
+
+        h3 {
+          margin: 10px 0 20px;
+          font-weight: 600;
+        }
+      }
+    }
+}

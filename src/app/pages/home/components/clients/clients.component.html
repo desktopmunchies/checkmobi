@@ -1,0 +1,23 @@
+<section>
+    <div id="clientsSection">
+        <div class="container-fluid">
+            <div class="flex-row d-flex align-items-center justify-content-center">
+                <div class="number">200+</div>
+                <div class="text">
+                    <div>customers<br>trust us<br>worldwide</div>
+                </div>
+            </div>
+
+            <div class="clients-holder row text-center">
+                <div *ngFor="let item of clients" class="col-xl col-md-4 col-sm-6 col-6">
+                    <div class="title">{{item.title}}</div>
+                    <div class="flex-column">
+                        <div *ngFor="let client of item.children">
+                            <img alt="{{client.title}}" [src]="'assets/images/landing/clients/' + client.image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

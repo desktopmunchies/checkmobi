@@ -1,0 +1,10 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+#MultipleCarriersSection {
+  padding-bottom: 80px;
+  .marketing-subheader {
+    margin: 10px 0 20px 0;
+    font-weight: $semi_bold;
+  }
+}

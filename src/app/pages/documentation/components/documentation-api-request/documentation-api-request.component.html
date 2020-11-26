@@ -1,0 +1,42 @@
+<h1>API Request</h1>
+
+<p>
+    CheckMobi exposes a list of REST APIs to perform various actions. These APIs are using JSON for encoding/decoding the data exchanged between your client and our services .
+</p>
+
+<p>
+    The base URL for all API requests is <code>https://api.checkmobi.com/v1/</code>.
+</p>
+
+<p>
+    All arguments required in all resources using POST are sent using key/value JSON encoding payload.
+</p>
+
+<h1>Authentication</h1>
+
+<p>
+    All requests to CheckMobi API are authenticated using your secret key. Your CheckMobi secret key can be found into your account
+    <a href="/account.html#/settings" target="_blank" class="link">settings</a>.
+</p>
+
+<p>
+    The secret key is passed to the API as value of a HTTP header called <b>Authorization</b>.
+</p>
+
+<h1>Content Type</h1>
+
+<p>
+    CheckMobi only accepts input of the type <code>application/json</code>. All POST requests arguments must be passed as json with the Content-Type set as <code>application/json</code>.
+</p>
+
+<h1>Phone number format</h1>
+
+<p>
+    Our API is accepting only phone numbers in E.164 format. You can specify the number starting + but this is not mandatory.
+    In case + sign is missing, it will be added automatically by our service.
+</p>
+
+<p>
+    For more details about E.164 standard please
+    <a class="link" href="http://en.wikipedia.org/wiki/E.164" rel="noopener" target="_blank">click here</a>
+</p>

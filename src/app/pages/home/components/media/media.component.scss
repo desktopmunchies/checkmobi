@@ -1,0 +1,32 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+#mediaSection {
+  background-color: $landing_bg_gray;
+  padding: 0;
+  overflow: hidden;
+
+  > div {
+    background-image: url('/assets/images/landing/in-the-media.jpg');
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    margin-left: -100px;
+    margin-right: -100px;
+    padding: 110px 0;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin: 0;
+    }
+  }
+
+  .marketing-section-title {
+    color: $landing_white;
+  }
+}

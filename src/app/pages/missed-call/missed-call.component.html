@@ -1,0 +1,256 @@
+<section id="Highlight" class="d-flex flex-column justify-content-center">
+    <div class="container">
+        <div class="border-line d-inline-block"></div>
+        <div class="d-inline-block">
+            <h1>Missed call <br/> verification</h1>
+            <h3>A detailed overview</h3>
+        </div>
+    </div>
+</section>
+
+<section id="How">
+    <div class="container">
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 d-none d-md-flex flex-column justify-content-center text-center">
+                <img src="assets/images/missed-call/hot-it-works.png" alt="how it works">
+            </div>
+            <div class="col-sm-5 object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInRightSmall">
+                <h2 class="marketing-subtitle">
+                    How it works
+                </h2>
+                <p class="marketing-text">
+                    A user that wants to get verified will receive a missed call from a random number. The last
+                    4 digits from the incoming number represent the one-time password (or pin number) that the
+                    user needs to validate his mobile number.
+                </p>
+                <p class="marketing-text">
+                    More technical information <a class="link"
+                                                  href="/documentation.html#/missed-call-guideline">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="light-blue-section detailed-overview-section">
+    <div class="container">
+        <h2 class="marketing-section-title text-center">What missed call is</h2>
+
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 text-holder object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInLeftSmall">
+                <h2 class="marketing-subtitle">
+                    A cost-effective mobile number verification
+                </h2>
+                <p class="marketing-text">
+                    That when used properly, can reduce the cost of mobile number verification. It can achieve
+                    this because the verification uses a missed call (with no answer) so there is no charge from
+                    the telecom providers.
+                </p>
+                <p class="marketing-text">
+                    <a class="link" href="/pricing.html#/rates/">See pricing here</a>
+                </p>
+            </div>
+            <div class="col-sm-5 text-center image-holder d-none d-md-flex justify-content-center flex-column">
+                <img src="assets/images/missed-call/what-missed-call-is.png" alt="sms verification">
+            </div>
+        </div>
+
+
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 text-center image-holder d-none d-md-flex flex-content justify-content-center">
+                <img src="assets/images/missed-call/extra-verification-method.png" alt="extra verification method">
+            </div>
+            <div class="col-sm-5 text-holder object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInRightSmall">
+                <h2 class="marketing-subtitle">
+                    Extra verification method
+                </h2>
+                <p class="marketing-text">
+                    That can increase your chances of success when verifying a mobile number. Missed call operates via
+                    calling medium unlike SMS so in the rare case that an SMS is delayed or does not reach a certain
+                    destination, a missed call verification might get that number verified. Ideally, the perfect flow
+                    should have all verification methods integrated: Missed Call, SMS &amp; IVR Call.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dark-blue-section detailed-overview-section">
+    <div class="container">
+        <h2 class="marketing-section-title text-center">What it isn’t</h2>
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 text-holder object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInLeftSmall">
+                <h2 class="marketing-subtitle">It is not a 0$ cost verification service</h2>
+                <p class="marketing-text">
+                    Missed call cannot remove the cost of verification entirely. If a missed call gets answered then
+                    it becomes a normal call and you will be charged the cost of 1 minute of calling towards the
+                    destination of the user. Some scenarios when a missed call is answered (could be more):
+                </p>
+                <ul>
+                    <li>
+                        When is directed instantly to voicemail.
+                    </li>
+                    <li>
+                        When the number is inserted wrongfully and someone else responds the call.
+                    </li>
+                    <li>
+                        The user receiving the call answers instantly.
+                    </li>
+
+                </ul>
+                <p class="marketing-text">
+                    However, a correct missed call implementation should not have more than 2-3% of missed calls
+                    getting answered.
+                </p>
+                <p class="marketing-text">
+                    <a class="link" href="/pricing.html#/rates/">See pricing here</a>
+                </p>
+            </div>
+            <div class="col-sm-5 text-center image-holder d-none flex-column justify-content-center d-md-flex">
+                <img src="assets/images/missed-call/what-it-isnt.png" alt="what is not">
+            </div>
+        </div>
+
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 text-center image-holder d-none d-md-flex flex-column justify-content-center">
+                <img src="assets/images/missed-call/not-to-be-used-alone.png" alt="not to be used alone">
+            </div>
+            <div class="col-sm-5 text-holder object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInRightSmall">
+                <h2 class="marketing-subtitle">
+                    It is not to be used stand-alone
+                </h2>
+                <p class="marketing-text">
+                    It is not to be used stand-alone as a single verification method.
+                    Missed call works best when it is set as the primary verification method to reduce cost, but has an
+                    automatic fallback to SMS in case the number did not get verified.
+                </p>
+                <p class="marketing-text">
+                    To see a good implementation of Missed Call in conjunction with other methods, see our Remote
+                    Config SDK for Android available <a class="link" target="_blank" rel="noopener"
+                                                        href="https://github.com/checkmobi/remote-config-sdk-android">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Guideline" class="d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="border-line d-sm-none d-inline-block"></div>
+        <div class="d-inline-block">
+            <h1>Ux and flow<br>guidelines</h1>
+            <h3>A detailed overview</h3>
+        </div>
+    </div>
+</section>
+
+<section class="detailed-overview-section">
+    <div class="container">
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 text-holder object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInLeftSmall">
+                <h2 class="marketing-subtitle">
+                    Confirm the number and explain the method to the user
+                </h2>
+                <p class="marketing-text">
+                    In your verification flow, make sure you ask the user to confirm that he typed the correct
+                    number.
+                </p>
+                <p class="marketing-text">
+                    Calling a wrong number can result in answered missed calls that can charge your account.
+                    We also have an API function that helps you verify if the number looks like a possible
+                    mobile number.
+                </p>
+                <p class="marketing-text">
+                    See documentation <a class="link" href="/documentation.html#/check-number">documentation</a>
+                </p>
+            </div>
+            <div class="col-sm-5 text-center image-holder d-none d-md-flex flex-column justify-content-center">
+                <img src="assets/images/missed-call/confirm-the-number.png" alt="how it works">
+            </div>
+        </div>
+
+
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 text-center image-holder d-none d-md-flex flex-column justify-content-center">
+                <img src="assets/images/missed-call/do-not-retry.png" alt="do not retry">
+            </div>
+            <div class="col-sm-5 text-holder object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInRightSmall">
+                <h2 class="marketing-subtitle">
+                    Do not retry missed call, just fall back on SMS
+                </h2>
+                <p class="marketing-text">
+                    Don't retry Missed Call on a number - If the missed call does not work, gracefully fall back
+                    on SMS. Don't let a user retry missed call as it increases the chances of him picking up the
+                    call a second time and charging us and you.
+                </p>
+                <p class="marketing-text">
+                    To help you with this, <a class="link" href="https://www.youtube.com/watch?v=iqakgqcsaww"
+                                              rel="noopener" target="_blank">here</a>
+                    is a video on a missed call and how the app should behave when
+                    successful and when it is not successful.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row content-holder justify-content-center">
+            <div class="col-sm-5 text-holder object-non-visible d-flex flex-column justify-content-center"
+                 data-animation-effect="fadeInLeftSmall">
+                <h2 class="marketing-subtitle">
+                    Great on Android, so-and-so on iOS, terrible on Web
+                </h2>
+                <p class="marketing-text">
+                    Missed call works great on Android because of the operating system that with the right
+                    permissions can allow your app to automatically intercept the call and use the last digits
+                    as pin number transforming the experience into 1 click verification.
+                </p>
+                <p class="marketing-text">
+                    On iOS the user needs to enter himself the last 4 digits so it requires extra explanations
+                    and user input.
+                </p>
+                <p class="marketing-text">
+                    On web, it could be very misleading as the user now has to receive the call on a mobile
+                    device
+                    and make sure he enters the last 4 digits from a missed call on a desktop device.
+                </p>
+            </div>
+            <div class="col-sm-5 text-center image-holder d-none d-md-flex flex-column justify-content-center">
+                <img src="assets/images/missed-call/great-on-android.png" alt="great on android">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="GuidelineTechnical" class="d-flex flex-column justify-content-center">
+    <div class="container">
+        <div class="border-line d-sm-none d-inline-block"></div>
+        <div class="d-inline-block">
+            <h1>Technical <br> implementation <br> guidelines</h1>
+            <h3>A detailed overview</h3>
+        </div>
+    </div>
+</section>
+
+<section class="detailed-overview-section">
+    <div class="container">
+        <p class="marketing-text">
+            An overview of missed call verification (a.k.a reverse CLI) can be found in our documentation
+            <a class="link" href="/documentation.html#/overview#MissedCall">here</a>.
+        </p>
+
+        <p class="marketing-text">
+            A step by step implementation of Missed Call can be found <a class="link"
+                                                                         href="documentation.html#/missed-call-guideline">here</a>.
+        </p>
+        <p class="marketing-text">
+            For a quick test, check our ready-to-compile SDKs <a href="/documentation.html#/sdk_overview" class="link">here</a>.
+        </p>
+    </div>
+</section>

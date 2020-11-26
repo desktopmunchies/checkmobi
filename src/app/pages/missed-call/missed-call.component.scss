@@ -1,0 +1,89 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+section {
+  padding: 80px 0;
+  font-weight: $semi_bold;
+
+  .border-line {
+    border-bottom: solid 5px rgb(222, 234, 255);
+    margin-right: 20px;
+    width: 80px;
+  }
+
+  .marketing-subtitle {
+    font-weight: $font-weight-bold;
+  }
+
+  .marketing-text {
+    font-weight: $semi_bold;
+  }
+
+  h1 {
+    font-size: 4.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: inherit;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      font-size: 3.3rem;
+    }
+  }
+
+  h3 {
+    font-size: $font-marketing-subtitle-smaller;
+    font-weight: $font-weight-bold;
+    color: rgb(222, 234, 255);
+  }
+}
+#Highlight {
+  padding: 0;
+  background-image: url("/assets/images/missed-call/header1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 75px - 60px - 60px);
+  color: $landing_white;
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    height: calc(50vh);
+  }
+}
+
+.detailed-overview-section {
+  .content-holder {
+    margin-top: 60px;
+  }
+}
+
+#Guideline {
+  background-image: url("/assets/images/missed-call/header.png");
+  height: calc(100vh - 60px - 60px);
+  color: $landing_white;
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    height: calc(50vh);
+  }
+}
+
+#GuidelineTechnical {
+  background-image: url("/assets/images/missed-call/header2.png");
+  height: calc(100vh - 60px - 60px);
+  color: $landing_white;
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    height: calc(50vh);
+  }
+}
+
+.light-blue-section {
+  background-color: $landing_bg_light_blue;
+}
+
+.dark-blue-section {
+  background-color: $landing_bg;
+  color: $landing_white;
+
+  .marketing-subtitle, .marketing-text, .marketing-section-title {
+    color: $landing_white;
+  }
+}

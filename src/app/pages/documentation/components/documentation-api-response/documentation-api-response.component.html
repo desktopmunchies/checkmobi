@@ -1,0 +1,124 @@
+<h1>API Response</h1>
+
+<p>
+    All CheckMobi APIs return a response in json format. The API returns one of the following HTTP status codes.
+</p>
+
+<ul>
+    <li> <code>200</code> – Success. The response has content</li>
+    <li> <code>204</code> – Success. No content available</li>
+    <li> <code>400</code> – A parameter is missing or is invalid</li>
+    <li> <code>401</code> – Authentication failed (invalid token or expired)</li>
+    <li> <code>403</code> – Forbidden (you don't have access to that resource)</li>
+    <li> <code>404</code> – Resource cannot be found</li>
+    <li> <code>500</code> – Server error</li>
+</ul>
+
+
+<h1>Available error codes</h1>
+
+<p>
+    In case you receive one of the above HTTP status codes that indicates an error (<code>400</code>, <code>401</code>)
+    you will receive in the response body one of
+    the below error codes and the description to help you to debug the route of the problem.
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width="100">Code</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>1</td>
+        <td>Invalid or expired API secret key</td>
+    </tr>
+
+    <tr>
+        <td>2</td>
+        <td>Invalid phone number. Phone number should be provided into E.164 format</td>
+    </tr>
+
+    <tr>
+        <td>3</td>
+        <td>Invalid request id</td>
+    </tr>
+
+    <tr>
+        <td>4</td>
+        <td>Invalid validation type. Allowed (sms, ivr, reverse_cli)</td>
+    </tr>
+
+    <tr>
+        <td>5</td>
+        <td>Insufficient funds</td>
+    </tr>
+
+    <tr>
+        <td>6</td>
+        <td>Insufficient CLI validation count</td>
+    </tr>
+
+    <tr>
+        <td>7</td>
+        <td>Invalid request payload</td>
+    </tr>
+
+    <tr>
+        <td>8</td>
+        <td>Validation method not available in this country</td>
+    </tr>
+
+    <tr>
+        <td>9</td>
+        <td>URL provided to receive notifications about validations is invalid</td>
+    </tr>
+
+    <tr>
+        <td>10</td>
+        <td>Invalid event payload</td>
+    </tr>
+
+    <tr>
+        <td>11</td>
+        <td>Restricted account due to suspicious activity</td>
+    </tr>
+
+    <tr>
+        <td>12</td>
+        <td>Your account exceeded one or more limitations</td>
+    </tr>
+
+    <tr>
+        <td>13</td>
+        <td>Destination is blocked due to application restrictions</td>
+    </tr>
+
+    <tr>
+        <td>14</td>
+        <td>Number temporary blocked because of too many attempts</td>
+    </tr>
+
+    </tbody>
+
+</table>
+
+
+<h1>Response Examples</h1>
+
+<h3>Success</h3>
+
+<pre>
+    <code class="json hljs-tag" [highlight]="successCode"></code>
+</pre>
+
+<h3>Error</h3>
+
+<pre>
+    <code class="json hljs-tag" [highlight]="errorCode"></code>
+</pre>
+

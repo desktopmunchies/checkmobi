@@ -1,0 +1,405 @@
+<h1>Place a call</h1>
+
+<p>
+    This API lets you initiate outbound calls via CheckMobi. The API supports Unicode UTF-8 encoded texts to be played in different languages.
+</p>
+
+<p>
+    <b>Location:</b> <code class="margin-left-5px">POST https://api.checkmobi.com/v1/call</code>
+</p>
+
+<h3>Arguments</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width="100">Parameter</th>
+        <th width="100">Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>from</td>
+        <td>string</td>
+        <td>Optional. The phone number to be used as the caller id. If missing we will use a CheckMobi number as CLI.
+            Number should be in E.164 format</td>
+    </tr>
+
+    <tr>
+        <td>to</td>
+        <td>string</td>
+        <td>The number where the call should be placed in E.164 format</td>
+    </tr>
+
+    <tr>
+        <td>events</td>
+        <td>string</td>
+        <td>The events that needs to be performed during the call flow. Please see the above section Available call actions
+            for more details</td>
+    </tr>
+
+    <tr>
+        <td>notification_callback</td>
+        <td>string</td>
+        <td>Optional. URL specified in case you want to receive notifications with the call status (ringing, hangup, answered)
+            and charged price in real-time.
+            Should contain maximum 255 chars, and hostname shouldn't be a private IP or loopback IP. All notifications are sent via POST
+            Please see the Notifications section below.
+        </td>
+    </tr>
+
+    <tr>
+        <td>platform</td>
+        <td>string</td>
+        <td>Optional. One of the following values: ios, android, web, desktop
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<h3>Available call actions</h3>
+
+The events should be provided into json format. An array with multiple actions which will be performed in the provided order.
+
+<h4>Speak element</h4>
+
+The Speak element is used to read out text as speech to the caller. The text should be provided in UTF-8.
+The attributes supported by the Speak element are listed below. The default behavior of each attribute can be modified using the allowed values.
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Allowed values</th>
+        <th>Default values</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>action</td>
+        <td>The unique identifier for the Speak element</td>
+        <td>speak</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>text</td>
+        <td>The text used as speech to the caller. The text should be provided in UTF-8. </td>
+        <td>Any UTF-8 encoded text</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>loop</td>
+        <td>Specifies number of times to speak out the text. If value set to 0, speaks indefinitely</td>
+        <td>int >= 0 (0 indicates a continuous loop)</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>voice</td>
+        <td>The tone to be used for reading out the text.</td>
+        <td>WOMAN, MAN</td>
+        <td>WOMAN</td>
+    </tr>
+
+    <tr>
+        <td>language</td>
+        <td>Language used to read out the text.</td>
+        <td>See Supported voices and languages <a target="_blank" [routerLink]="['/documentation/request-validation']">here</a>.</td>
+        <td>en-US</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<h4>Play element</h4>
+
+The Play element is used to play an audio file to the caller. The audio file is obtained from a remote URL(mp3 or wav file formats).
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Allowed values</th>
+        <th>Default values</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>action</td>
+        <td>The unique identifier for the Play element</td>
+        <td>play</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>url</td>
+        <td>The url of the file that need to be played</td>
+        <td>Any valid url to a mp3 or wav file format</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>loop</td>
+        <td>Specifies number of times the file will be played in loop. If value set to 0, play indefinitely</td>
+        <td>int >= 0 (0 indicates a continuous loop)</td>
+        <td>1</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<h4>Send DTMF</h4>
+
+This element is used to send digits on a call.
+This will usually used to automate the process of navigating through an IVR.
+Digits are sent in the background when the async parameter is set to true, so the call will jump to the next action
+element when the first digit is sent.
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Allowed values</th>
+        <th>Default values</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>action</td>
+        <td>The unique identifier for the Send DTMF element</td>
+        <td>send_dtmf</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>digits</td>
+        <td>The digits that has to be sent as DTMF</td>
+        <td>Use the character w for a 0.5 second delay and the character W for a 1 second delay. Allowed values: 1234567890*#wW</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>async</td>
+        <td>Proceed to next element after the first digit is sent.</td>
+        <td>true,false</td>
+        <td>true</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<h4>Wait element</h4>
+
+The Wait element waits silently for a specified number of seconds.
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Allowed values</th>
+        <th>Default values</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>action</td>
+        <td>The unique identifier for the Wait element</td>
+        <td>wait</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>length</td>
+        <td>Time to wait in seconds</td>
+        <td>integer greater than 0</td>
+        <td>1</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<h4>Hangup element</h4>
+
+The Hangup element is used to end a call.
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Allowed values</th>
+        <th>Default values</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>action</td>
+        <td>The unique identifier for the Hangup element</td>
+        <td>hangup</td>
+        <td>Mandatory</td>
+    </tr>
+
+    <tr>
+        <td>reason</td>
+        <td>Used to specify reason of hangup</td>
+        <td>rejected, busy</td>
+        <td>none</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<b>Example:</b>
+
+<pre>
+    <code class="json" [highlight]="json"></code>
+</pre>
+
+<h3>Notifications</h3>
+
+<p>
+    If you specify the <code>notification_callback</code> parameter, when the call state is updated we are sending a HTTP
+    request using <code>POST</code> method
+    to this URL.
+</p>
+
+<p>
+    You need to respond back with HTTP status <code>200 OK</code>. We will retry to send the request maximum 3 times in
+    case of another status code.
+</p>
+
+<p>
+    The request body is JSON encoded containing the following parameters:
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>id</td>
+        <td>string</td>
+        <td>Unique identifier of the request</td>
+    </tr>
+
+    <tr>
+        <td>from</td>
+        <td>string</td>
+        <td>The number used as CLI in E.164 format</td>
+    </tr>
+
+    <tr>
+        <td>to</td>
+        <td>string</td>
+        <td>The number where the call was delivered in E.164 format</td>
+    </tr>
+
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>A short description about carrier and country: for example: Orange - FR</td>
+    </tr>
+
+    <tr>
+        <td>event</td>
+        <td>string</td>
+        <td>The call status. One of the following values: ringing, answer, hangup</td>
+    </tr>
+
+    <tr>
+        <td>charged_amount</td>
+        <td>float</td>
+        <td>Sent only when is available. Total cost for the call based on charged_rate and duration_billed</td>
+    </tr>
+
+    <tr>
+        <td>charged_rate</td>
+        <td>float</td>
+        <td>Sent only when is available. Charged rate per minute</td>
+    </tr>
+
+    <tr>
+        <td>duration_billed</td>
+        <td>int</td>
+        <td>Sent only when is available. Represent the length of the call in seconds between answer and hangup</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<h3>Request</h3>
+
+<b>Method:</b> <code class="margin-left-5px">POST</code><br>
+<b>URI:</b> <code class="margin-left-5px">https://api.checkmobi.com/v1/call</code><br>
+<b>HTTP headers:</b> <code class="margin-left-5px">Content-Type</code>, <code>Authorization</code>.
+More details <a [routerLink]="['/documentation.html/api-request']" class="link" target="_blank">here</a>.<br>
+<b>Body:</b> <span class="margin-left-5px">JSON encoded dictionary containing the parameters described above</span>
+<br>
+<div class="margin-bottom-10px"><b>CURL Example:</b></div>
+<pre>
+    <code class="bash" [highlight]="curl"></code>
+</pre>
+
+<h3>Response</h3>
+
+<p>HTTP status code: <code>200</code></p>
+
+<pre>
+    <code class="json" [highlight]="json2"></code>
+</pre>
+
+<h3>Response Attributes</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width="100">Parameter</th>
+        <th width="100">Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>id</td>
+        <td>string</td>
+        <td>Unique identifier of the request</td>
+    </tr>
+
+    <tr>
+        <td>number_info</td>
+        <td>array</td>
+        <td>Information regarding the number that needs to be validated. See <a [routerLink]="['/documentation/check-number']" class="link"
+                                                                                target="_blank">Check Number API</a> for more details</td>
+    </tr>
+
+    </tbody>
+</table>

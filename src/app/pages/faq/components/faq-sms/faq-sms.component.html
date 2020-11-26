@@ -1,0 +1,64 @@
+<div>
+    <h3>SMS</h3>
+
+    <div class="accordion card" id="What-is-your-SMS-coverage">
+        <a [routerLink]="['/faq/What-is-your-SMS-coverage']"
+                data-toggle="collapse" class="card-header" data-target="#collapseSms1" aria-expanded="true" aria-controls="collapseSms1">
+            <h5>What is your SMS coverage?</h5>
+        </a>
+        <div id="collapseSms1" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                We have global coverage on SMS. To search if we support a certain country check
+                <a target="_blank" class="link" [routerLink]="['/pricing']" fragment="Rates">here</a>.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="Can-I-customize-Sender-ID">
+        <a [routerLink]="['/faq/Can-I-customize-Sender-ID']"
+           data-toggle="collapse" class="card-header" data-target="#collapseSms2" aria-expanded="true" aria-controls="collapseSms2">
+            <h5>Can I customize Sender ID?</h5>
+        </a>
+        <div id="collapseSms2" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                We don't offer this option and with a good reason:
+                Our SMS carriers put the best Sender ID to make sure it will pass all SMS blacklists and increase
+                deliverability. By customizing it you risk of getting it blacklisted and decrease your chances of
+                successful delivery.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="What-is-a-successful-SMS-message">
+        <a [routerLink]="['/faq/What-is-a-successful-SMS-message']"
+           data-toggle="collapse" class="card-header" data-target="#collapseSms3" aria-expanded="true" aria-controls="collapseSms3">
+            <h5>What is a successful SMS message?</h5>
+        </a>
+        <div id="collapseSms3" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                A successful message is an SMS that CheckMobi
+                successfully delivers across to our carrier and they manage to send it forward. It can be a case
+                where a message is successful in sending but undelivered because phone is closed or destination
+                number is unreachable. If SMS is failing because of CheckMobi then you won’t get charged.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="Multiple-Carrier-Support">
+        <a [routerLink]="['/faq/Multiple-Carrier-Support']"
+           data-toggle="collapse" class="card-header" data-target="#collapseSms4" aria-expanded="true" aria-controls="collapseSms4">
+            <h5>Multiple Carrier Support</h5>
+        </a>
+        <div id="collapseSms4" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                Multiple Carrier Support is a feature CheckMobi offers
+                as part of SMS verification. What it basically means is that CheckMobi has multiple SMS
+                providers, each with their own uptime and good SMS routes and own rates, that you can choose
+                to set in round robin fashion or set as primary the best SMS provider in terms of cost and success
+                rate on each country. It’s basically like integrating two companies such as CheckMobi to use as
+                SMS verification. This feature highly increases chances of success and grants you full control on
+                a country by country level.
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,279 @@
+<div class="pricing-rates">
+    <div class="container">
+        <div class="pricing-card">
+            <div class="rates-content text-center">
+                <div class="row">
+                    <div class="col-sm-12 text-center introduction">
+                        <h3 class="marketing-subtitle font-weight-semi-bold">
+                            Low latency &amp; high deliverability SMS &amp; calls at affordable prices
+                        </h3>
+                        <div class="" *ngIf="permissions.canSignup()">
+                            <a rel="nofollow" class="btn btn-warning btn-large bigger-button signup-button"
+                               href="/account.html#/upgrade/subscription/">
+                                GET<br>SUBSCRIPTION
+                            </a>
+                        </div>
+                        <div class="marketing-description font-weight-semi-bold" *ngIf="permissions.canSignup()">
+                            You need to get one of our subscription packages in order to use SMS and Calling
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 country-parent-holder">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="dropdown" *ngIf="country">
+                                    <a class="country-holder pointerCur d-flex justify-content-between"
+                                       id="CountryDropdown"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img [src]="'assets/images/flags/'+country.iso2+'-128.png'">
+                                        <span class="media-body">
+                                                {{ country.name }}
+                                            <i class="fas fa-chevron-down"></i>
+                                            </span>
+                                    </a>
+
+                                    <div class="dropdown-menu country-dropdown"
+                                         aria-labelledby="CountryDropdown">
+                                        <input autofocus minlength="1" placeholder="Search..." type="text"
+                                               #search [formControl]="searchField"
+                                               class="form-control">
+                                        <ul data-ng-show="vm.countryFilter.length >= 1">
+                                            <li *ngFor="let c of searchedCountries">
+                                                <a class="pointerCur" (click)="selectCountry(c)">
+                                                    {{ c.name }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="helper-text margin-top-10px">200+ countries - No hidden fees</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- SMS -->
+                <div class="row rates-holder" *ngIf="carriers && rates">
+                    <div class="col-md-6 text-center">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="plan-holder">
+                                    <div class="marketing-subtitle">Send outbound SMS starting at</div>
+                                    <div class="price">
+                                        <span *ngIf="rates.sms_min_rate">
+                                        {{ rates.sms_min_rate | cmCurrency:4 }}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        per sms
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngFor="let carrier of carriers">
+                            <div class="col-sm-12">
+                                <div class="li-header text-left {{ carrier.name.replace(' ','-') | lowercase }}-class d-flex flew-row justify-content-between align-items-center">
+                                    <div>
+                                        <p><strong>{{ carrier.shortName }} SMS PROVIDER</strong></p>
+                                        <p class="description">{{ carrier.description }}</p>
+                                    </div>
+                                    <div>
+                                        <a class="pull-right text-center"
+                                           [href]="downloadRatesUrl('sms', carrier.id)"
+                                           title="Download SMS {{ carrier.name.split(' ')[0] }} full rates">
+                                            RATES<br><i class="fas fa-arrow-alt-circle-down"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <ul class="rates-ul"
+                                    *ngIf="permissions.smsServiceAvailable(carrier)">
+                                    <li [ngClass]="{ 'active': rate.selected }"
+                                        *ngFor="let rate of carrier.rates.sms_rates">
+                                        <div>
+                                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                                <div class="">
+                                                    {{ rate.group_name }}
+                                                </div>
+                                                <div class="">
+                                                    {{ rate.rate | cmCurrency:4}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p class="text-left margin-top-10px" *ngIf="!permissions.smsServiceAvailable(carrier)">
+                                    This service is not available in this region.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CALLS -->
+                    <div class="col-md-5 text-center">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="plan-holder">
+                                    <div class="marketing-subtitle">Make calls starting at</div>
+                                    <div class="price">
+                                        <span>
+                                            {{ rates.call_min_rate | cmCurrency:4 }}
+                                        </span>
+                                    </div>
+                                    <div class="">
+                                        per minute
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-container *ngFor="let carrier of carriers">
+                            <div class="row" *ngIf="permissions.callRates(carrier)">
+                                <div class="col-sm-12 right-rate">
+                                    <div class="li-header text-left {{ carrier.name.replace(' ','-') | lowercase }}-class d-flex flew-row justify-content-between align-items-center">
+                                        <div>
+                                            <p>
+                                                <strong>{{ carrier.shortName }} VOICE CALL PROVIDER</strong>
+                                            </p>
+                                            <p class="description">{{ carrier.description }}</p>
+                                        </div>
+
+                                        <div>
+                                            <a class="pull-right text-center"
+                                               [href]="downloadRatesUrl('call', carrier.id)"
+                                               title="Download Call {{ carrier.name.split(' ')[0] }} full rates">
+                                                RATES<br><i class="fas fa-arrow-alt-circle-down"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <ul class="rates-ul"
+                                        *ngIf="permissions.callServiceAvailable(carrier)">
+                                        <li [ngClass]="{ 'active': rate.selected }"
+                                            *ngFor="let rate of carrier.rates.call_rates">
+                                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                                <div>
+                                                    <span *ngFor="let prefix of rate.prefix, let last = last">{{ prefix }}
+                                                        <span *ngIf="!last">,</span></span>
+                                                </div>
+                                                <div>
+                                                    {{ rate.rate | cmCurrency:4}}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <p class="text-left margin-top-10px"
+                                       *ngIf="!permissions.callServiceAvailable(carrier)">
+                                        This service is not available in this region.
+                                    </p>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rates">
+        <section class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="marketing-rates">
+                            <div class="row text-left">
+                                <div class="col-md-6 text-holder flex-column d-flex justify-content-center">
+                                    <h2 class="marketing-subtitle margin-bottom-30px">Carrier networks can be
+                                        volatile</h2>
+                                    <p class="marketing-text">
+                                        That is why we offer our customers our unique Multiple Carrier Solution (MCS) to
+                                        be
+                                        able to act instantly and direct traffic via the fastest and most secure
+                                        alternative route.
+                                    </p>
+                                    <p class="marketing-text">
+                                        The fact that each of the carriers has different rates indicates that they are
+                                        completely
+                                        independent telecom companies, with their own routes for SMS and calls, own
+                                        redundancy
+                                        and scalability policies and great support.
+                                    </p>
+                                    <p class="marketing-text">
+                                        Using CheckMobi, it's like integrating two different companies just to take
+                                        care of your
+                                        user verification flow. If we can't deliver your SMS or call, probably nobody
+                                        can.
+                                    </p>
+                                </div>
+                                <div class="image-holder col-md-6 flex-column d-flex justify-content-center">
+                                    <div class="text-center">
+                                        <img src="assets/images/pricing/carriers.png" alt="multiple carriers">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="" id="carrier" href="pricing.html#/rates/#carrier">
+            <div class="multiple-carriers-section text-center">
+                <div class="container">
+                    <h2 class="marketing-section-title">Multiple Carrier Support includes:</h2>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img height="100" src="assets/images/pricing/multiple-carrier-icon-1.png"
+                                 alt="set as fallback">
+                            <h3 class="marketing-subheader">Set as fallback</h3>
+                            <p class="marketing-text">
+                                You can enable the two carriers in fallback mode si that a second attempt to verify the
+                                same
+                                number in less than 5 minutes to use the second carrier.
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <img height="100" src="assets/images/pricing/multiple-carrier-icon-2.png"
+                                 alt="set as fallback">
+                            <h3 class="marketing-subheader">Be in full control</h3>
+                            <p class="marketing-text">
+                                You have full control in the rare case of one of our carriers underperforming. You can
+                                act
+                                immediately and switch SMS or Calling via the second provider giving us time to
+                                troubleshoot
+                                the issue without losing customers.
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <img height="100" src="assets/images/pricing/multiple-carrier-icon-3.png"
+                                 alt="set as fallback">
+                            <h3 class="marketing-subheader">Decide with analytics</h3>
+                            <p class="marketing-text">
+                                Monitor real-time analytics and route each country with the most appropriate carrier
+                                based on
+                                the best combination of pricing and success rate. Your account comes set up by default
+                                to have
+                                the best solution in place.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-12 marketing-description margin-bottom-40px">
+                        <div class="margin-top-40px">
+                            Subscriptions do not include any SMS messages or IVR Calls besides the initial one-time
+                            bonus credit.
+                            For SMS and IVR Call, you need to deposit credit after initial one-time bonus credit is
+                            used.
+                            <a ui-sref="pricing.rates">Click here for rates.</a>
+                        </div>
+                        <div class="margin-top-40px" *ngIf="!userExists">In order to purchase any of the subscription
+                            models above you need
+                            to have a
+                            CheckMobi account.<br>
+                            <a href="/login.html#/signup">Create account</a> or <a href="/login.html">Login</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

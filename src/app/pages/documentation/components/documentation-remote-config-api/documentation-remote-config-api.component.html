@@ -1,0 +1,139 @@
+<h1>Get Remote Config profile</h1>
+
+<p>
+    This API let the applications to get the Remote Config profile that is configured in the website for a specific destination.
+</p>
+
+<p>
+    <b>Location:</b> <code class="margin-left-5px">POST https://api.checkmobi.com/v1/validation/remote-config</code>
+</p>
+
+<h3>Arguments</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width="100">Parameter</th>
+        <th width="100">Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>number</td>
+        <td>string</td>
+        <td>The number that needs to be validated</td>
+    </tr>
+
+    <tr>
+        <td>platform</td>
+        <td>string</td>
+        <td>One of the following values: ios, android, web, desktop</td>
+    </tr>
+
+    <tr>
+        <td>language</td>
+        <td>string</td>
+        <td>Optional. In case it's missing the profile will use the default language selected in account settings page.
+            We support all <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" rel="noopener" class="link" target="_blank">ISO-639-1 language codes</a>.</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h3>Request</h3>
+
+<b>Method:</b> <code class="margin-left-5px">POST</code><br>
+<b>URI:</b> <code class="margin-left-5px">https://api.checkmobi.com/v1/validation/remote-config</code><br>
+<b>HTTP headers:</b> <code class="margin-left-5px">Content-Type</code>, <code>Authorization</code>.
+More details <a [routerLink]="['/documentation/api-request']" class="link" target="_blank">here</a><br>
+<b>Body:</b> <span class="margin-left-5px">JSON encoded dictionary containing the parameters described above</span>
+<br>
+<div class="margin-bottom-10px"><b>CURL Example:</b></div>
+<pre>
+    <code class="bash" [highlight]="curl"></code>
+</pre>
+
+<h3>Response</h3>
+
+<p>HTTP status code: <code>200</code></p>
+
+<pre>
+    <code class="json hljs-tag" [highlight]="json"></code>
+</pre>
+
+<h3>Response Attributes</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width="100">Parameter</th>
+        <th width="100">Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>settings</td>
+        <td>object</td>
+        <td>Returns the validations methods in the order they need to be presented to the user. Each validation
+            method contains the following properties: type - the validation type, max_attempts - how many times will
+            repeat that validation type until goes to the next one, delay - how much time will wait for the method to complete</td>
+    </tr>
+
+    <tr>
+        <td>country_code</td>
+        <td>string</td>
+        <td>Country prefix from where the number belongs</td>
+    </tr>
+
+    <tr>
+        <td>country_iso_code</td>
+        <td>string</td>
+        <td>The country code from where the number belongs in
+            <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" rel="noopener" class="link" target="_blank">ISO 3166-1 alpha-2 format</a> </td>
+    </tr>
+
+    <tr>
+        <td>carrier</td>
+        <td>string</td>
+        <td>The name of the carrier from where the number belongs</td>
+    </tr>
+
+    <tr>
+        <td>is_mobile</td>
+        <td>boolean</td>
+        <td><code>true</code> in case the number is a mobile phone number. <code>false</code> otherwise</td>
+    </tr>
+
+    <tr>
+        <td>e164_format</td>
+        <td>string</td>
+        <td>The number in E.164 format including + sign</td>
+    </tr>
+
+    <tr>
+        <td>formatting</td>
+        <td>string</td>
+        <td>The number formatted in E.164 format</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Notes</h3>
+
+For <code>sms</code> type the API returns 2 additional properties:
+
+<ol>
+    <li class="margin-top-5px">
+        <code>sms_template</code> - The message template that will be delivered (as defined in the website portal)
+    </li>
+    <li class="margin-top-5px">
+        <code>android_app_hash</code> - This property is sent only in case it's defined into the Remote Config Profile on the web portal and <code>platform</code> is <code>android</code>.
+        This should be used in the <a [routerLink]="['documentation/request_validation']" class="link" target="_blank">Validation Request API</a> to populate the <code>android_app_hash</code> property.
+    </li>
+</ol>

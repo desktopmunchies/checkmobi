@@ -1,0 +1,50 @@
+<div class="tocify">
+    <ul class="tocify-header nav flex-column">
+        <li *ngFor="let item of menuItems, index as i"
+            class="tocify-item"
+            [routerLinkActive]="(item.url) ? 'active' : ''"
+            [routerLinkActiveOptions]="{exact: true}"
+            [ngClass]="{'is-expanded': item.is_expanded || item.is_open, 'has-submenu': item.submenu}">
+            <a (click)="openMenu(item, menuItems)"
+               [routerLink]="item.url ? item.url : null"
+               class="d-flex flex-row justify-content-between align-items-center"
+               title="{{item.title}}">
+                <span class="">{{item.title}}</span>
+                <i class="fas fa-angle-right" *ngIf="item.submenu"></i>
+            </a>
+
+            <ul *ngIf="item.submenu"
+                [id]="'submenu' + i"
+                class="tocify-subheader nav flex-column"
+                [ngClass]="{'show': item.is_expanded || item.is_open, 'collapse': !item.is_open}">
+                <li *ngFor="let subitem of item.submenu, index as j"
+                    [routerLinkActive]="(subitem.url) ? 'active' : ''"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    class="tocify-item"
+                    [ngClass]="{'is-expanded': subitem.is_expanded || subitem.is_open, 'has-submenu': subitem.submenu}">
+                    <a (click)="openMenu(subitem, item.submenu)"
+                       [routerLink]="subitem.url ? subitem.url : null"
+                       class="d-flex flex-row justify-content-between align-items-center"
+                       title="{{subitem.title}}">
+                        <span class="">{{subitem.title}}</span>
+                        <i class="fas fa-angle-right" *ngIf="subitem.submenu"></i>
+                    </a>
+
+                    <ul *ngIf="subitem.submenu"
+                        [id]="'submenu' + i + j"
+                        class="tocify-subheader nav flex-column"
+                        [ngClass]="{'show': subitem.is_expanded || subitem.is_open, 'collapse': !subitem.is_open}">
+                        <li *ngFor="let subsubitem of subitem.submenu"
+                            routerLinkActive="active" class="tocify-item"
+                            [routerLinkActiveOptions]="{exact: true}"
+                        >
+                            <a [routerLink]="subsubitem.url ? subsubitem.url : null"
+                               class="d-flex"
+                               title="{{subsubitem.title}}">{{subsubitem.title}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

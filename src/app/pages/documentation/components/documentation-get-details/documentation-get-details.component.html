@@ -1,0 +1,100 @@
+<h1>Get Account details</h1>
+
+<p>
+    Using the account API you can retrieve your account details like email, available cash credits, expiration date, monthly usage, etc.
+</p>
+
+<p>
+    <b>Location:</b> <code class="margin-left-5px">GET https://api.checkmobi.com/v1/my-account</code>
+</p>
+
+<h3>Request</h3>
+
+<b>Method:</b> <code class="margin-left-5px">GET</code><br>
+<b>URI:</b> <code class="margin-left-5px">https://api.checkmobi.com/v1/my-account</code><br>
+<b>HTTP headers:</b> <code class="margin-left-5px">Content-Type</code>, <code>Authorization</code>.
+More details <a [routerLink]="['/documentation/api-request']" class="link" target="_blank">here</a>.<br>
+<b>Body:</b> <span class="margin-left-5px">N/A</span>
+<br>
+<div class="marginbottom10px"><b>CURL Example:</b></div>
+<pre>
+    <code class="bash" [highlight]="curl"></code>
+</pre>
+
+<h3>Response</h3>
+
+<p>HTTP status code: <code>200</code></p>
+
+<pre>
+    <code class="json hljs-tag" [highlight]="json"></code>
+</pre>
+
+<h3>Response Attributes</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width="100">Parameter</th>
+        <th width="100">Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>email</td>
+        <td>string</td>
+        <td>The account associated email</td>
+    </tr>
+
+    <tr>
+        <td>subscription</td>
+        <td>array</td>
+        <td>The subscription package details associated with the accounts (id, name, how many cli and missed call validations are included)</td>
+    </tr>
+
+    <tr>
+        <td>cli_validations</td>
+        <td>integer</td>
+        <td>How many CLI and Missed Call (Reverse CLI) validations were performed</td>
+    </tr>
+
+    <tr>
+        <td>sms_validations</td>
+        <td>integer</td>
+        <td>How many SMS validations were performed in the last month</td>
+    </tr>
+
+    <tr>
+        <td>ivr_validations</td>
+        <td>integer</td>
+        <td>How many IVR validations were performed in the last month</td>
+    </tr>
+
+    <tr>
+        <td>sms_api</td>
+        <td>integer</td>
+        <td>How many SMS's were sent through SMS API in the last month</td>
+    </tr>
+
+    <tr>
+        <td>voice_api</td>
+        <td>integer</td>
+        <td>How many calls were sent through Voice API</td>
+    </tr>
+
+    <tr>
+        <td>expiration_date</td>
+        <td>integer</td>
+        <td>The UNIX timestamp in seconds when the subscription will expire</td>
+    </tr>
+
+    <tr>
+        <td>credit_balance</td>
+        <td>float</td>
+        <td>The current account balance</td>
+    </tr>
+
+    </tbody>
+</table>

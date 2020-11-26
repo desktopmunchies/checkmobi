@@ -1,0 +1,79 @@
+<h1>Missed Call Guideline</h1>
+
+<h2>Overview</h2>
+
+<p>The Missed Call (known as Reverse CLI) method is based on a missed call sent by CheckMobi on the user phone number.
+    Then in order to validate the number the application has to send back the last 4 digits from the incoming call number as pin.</p>
+<p>Complete diagram for this method can be found <a class="link" [routerLink]="['/documentation/overview']" fragment="MissedCall" target="_blank">here</a>.
+
+<h2>Implementation</h2>
+
+<p>Basically this method involves 2 different steps:</p>
+
+<ul>
+    <li>Request for a validation</li>
+    <li>Checking the pin</li>
+</ul>
+
+<h3>1. Request for a validation</h3>
+
+<p>In order to request a new validation you need to call the <a class="link" target="_blank" [routerLink]="['/documentation/request-validation']">Request Validation API</a>.</p>
+
+<p>Here you will have to populate inside the JSON payload the <code>type</code> using <code>reverse_cli</code> (for missed call validation) and the <code>number</code>
+    with the number you want to validate. (of course, you can also populate the <code>platform</code> as well, and we strongly
+    recommend you to do this even if is not mandatory).</p>
+
+<p>In the client, after this call, you will wait for the incoming call a certain amount of time (you decide how much - we recommend 30 - 40 seconds).</p>
+
+<h3>2. Verifying the PIN</h3>
+
+<p>This process is done using the <a class="link" [routerLink]="['/documentation/verify-pin']" target="_blank">Verify PIN API</a></p>
+
+<h4 class="margin-top-20px">2a. Client doesn't get the call in the desired timeframe</h4>
+
+<p>In case the client doesn't get any call in that timeframe you decided, you can fire the verify PIN resource populating the properties as follow:
+
+<ul>
+    <li><b>id</b> - The value of the <code>id</code> property received in response to the step (1)</li>
+    <li><b>use_server_hangup</b> - Set this to <code>true</code></li>
+    <li><b>pin</b> - Set this to string <code>HANGUP</code></li>
+</ul>
+
+<p>You can call as well the <a [routerLink]="['/documentation/hangup-call']" class="link" target="_blank">Hangup API</a> which will have the same effect (but we prefer the first approach described because we have better-debugging info in case you report issues).</p>
+<p>Both methods are doing the same thing: will tell the server to hang up immediately the call because that validation is no longer possible (maybe user put a wrong number and phone is calling somewhere else or maybe there is a problem with the carriers calling that destination).</p>
+
+<h4 class="margin-top-20px">2b. Incoming call is received</h4>
+
+<p>In case the client catches a call, you are calling same Verify PIN API as in the above section <strong>2a</strong>, with same parameters and values,
+    exception being the value of <code>pin</code> parameter. This one should be populated with the last 4 digits from the number from where the call comes (instead <code>HANGUP</code> as in <strong>2a</strong> point) </p>
+<p>In response to this, you will get if the number is validated or not and the server will make sure the call will be canceled immediately (if you set the <code>use_server_hangup=true</code> parameter)</p>
+
+<h2>Notes</h2>
+
+<p>This might be the ideal approach for <strong>Android</strong> because on Android you are able to take information about the number you are called from and send it automatically to us.</p>
+<p>On <strong>iOS</strong> you can only detect that you got a call but the user has to put last <strong>4 digits</strong> manually for this reason the approach is a bit different.</p>
+
+<h2>FAQ</h2>
+
+<ol class="px18">
+    <li>
+        <h4>Why <code>use_server_hangup=true</code> and just not close the call from the device when received?</h4>
+        <div class="">
+            Some carriers, when closing call from device and not from the caller (our server), will charge us
+            (they play some messages like : user is busy please try later or leave a message after the beep) and we
+            will have to charge you as well.
+        </div>
+    </li>
+
+    <li class="margin-top-20px">
+        <h4>When a missed call validation can fail?</h4>
+        <div class="">
+            There are multiple reasons but most common are:
+            <ol class="margintop10px" style="list-style: lower-alpha">
+                <li>User put a wrong number and the phone is ringing somewhere else (will trigger point <strong>2a</strong>)</li>
+                <li>Carrier doesn't propagate the number we are sending and replace this with something else (it might happen on certain destinations)</li>
+                <li>Bad implementations on clients/clients crashing during validation</li>
+            </ol>
+        </div>
+    </li>
+</ol>

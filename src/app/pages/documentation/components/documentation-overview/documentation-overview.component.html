@@ -1,0 +1,103 @@
+<h1>Overview</h1>
+
+<p>
+    CheckMobi APIs are based on HTTP methods, which make it easy to integrate into your own products.
+</p>
+
+<p>
+    You can use any HTTP client in any programming language to interact with the API.
+    Also we provide two simple SDKs with sample client for iOS and Android to make your life easy.
+    Those are open source so you can modify/customize as you wish.
+</p>
+
+<h1>Default Base URL</h1>
+
+<p>
+    The default base URL for CheckMobi API is: <code>https://api.checkmobi.com/&#123;version&#125;/</code>
+</p>
+
+<p>
+    Note: for security reasons, all CheckMobi APIs are served over HTTPS only.
+</p>
+
+<h1>Validation methods overview</h1>
+
+<p> On most of the platforms it's almost impossible to read the user number from it's SIM card memory.
+    It depends on the SIM card manufacturer if they add the mobile number into the SIM card or not.
+    So even there is a way available to read the mobile number from the SIM card, in most of the cases you will receive an empty value.
+</p>
+
+<p>
+    Because of this reason most of the available services prefer to validate their users phone number using SMS and IVR's.
+</p>
+
+<h3><b>SMS and IVR</b></h3>
+
+<p>
+    Using <b>SMS or IVR</b> is very expensive due to high rates paid to SMS gateways. The SMS gateways will charge on the volume of SMS used and not on verified user’s count.
+    You can be charged also for SMS which were never sent. For a single user verification sometimes you need to send multiples sms/calls and the most common reasons are:
+</p>
+
+<ul>
+    <li>Wrong number sent by user</li>
+    <li>Carrier issues</li>
+    <li>Delay in receiving SMS</li>
+</ul>
+
+<p>
+    It's true that IVR validations is more reliable than SMS because calls have higher priority than sms messages inside telecom platforms but they
+    are still expensive because you are billed for at least 1 minute no matter if your message was played in 15 seconds.
+</p>
+
+<p>
+    In the next diagram you can see how SMS and IVR validation is working with CheckMobi services:
+</p>
+
+<p class="text-center">
+    <img src="assets/images/documentation/sms_ivr.png" alt="SMS IVR validation workflow"/>
+</p>
+
+<p>
+    In case you want to use this 2 validations methods CheckMobi allows you to customize them completely. In the Settings page you can customize:
+</p>
+
+<ul>
+    <li>The SMS text - Including support for internationalization</li>
+    <li>The IVR prompts - supporting internationalization in over 11 different languages</li>
+    <li>IVR voice - female/male</li>
+    <li>Number of times the IVR prompt will be played</li>
+</ul>
+
+<h3 id="MissedCall"><b>Reverse Caller ID (Missed Call)</b></h3>
+
+<p>
+    In case you want to reduce your validation costs we provide you the Reverse CLI (aka: Missed call) method.
+</p>
+
+<p>
+    Hereinafter we will try to explain in detail how this method works and how you can reduce your cost and also the time spent by our users to validate their numbers
+    and to go into your application faster.
+</p>
+
+<p>
+    The <b>Reverse Caller ID</b> (Reverse CLI) method is based on a missed call sent by CheckMobi on the user phone number. Then in order to validate the number the app has to send back
+    the last 4 digits from the incoming call number as pin.
+
+    On Android this can be done without any interaction from user. The app can detect the incoming call , can close it to make sure the user will not try to answer it and also
+    can extract the pin automatically. On the other platforms where this is not possible the user should look into call history and to insert in the app the last 4 digits.
+    In order to identify the correct call we send back the first 5 digits in the validation request.
+<p>
+
+<p>
+    In the next diagram you can see how Reverse Caller ID validation is working with CheckMobi services:
+</p>
+
+<p class="text-center">
+    <img src="assets/images/documentation/reverse_cli.png" alt="Caller ID validation workflow"/>
+</p>
+
+<p>
+    This method is very powerful on Android and it has the same security level as SMS or IVR. The only problem is that from time to time you might be charged in case the user enters a
+    wrong number and the receiver is fast enough to answer the call. Another downside is that on iOS or any other platforms where OS will not allow you to intercept the calls
+    the user should insert the last 4 number digits manually.
+</p>

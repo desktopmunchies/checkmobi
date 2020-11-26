@@ -1,0 +1,33 @@
+<div>
+    <h3>Calling & Voice API</h3>
+
+    <div class="accordion card" id="What-is-your-Call-IVR-coverage">
+        <a title="What is your Call IVR coverage?" [routerLink]="['/faq/What-is-your-Call-IVR-coverage']"
+
+           data-toggle="collapse" class="card-header" data-target="#Voice1" aria-expanded="true" aria-controls="Voice1">
+            <h5>What is your Call IVR coverage?</h5>
+        </a>
+        <div id="Voice1" class="collapse card-body">
+            <div>
+                Our Call IVR service works world-wide. For more info on coverage and rates check our
+                <a target="_blank" [routerLink]="['/pricing']" fragment="Rates" class="link">pricing section</a>.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="Do-you-support-per-second-charging">
+        <a [routerLink]="['/faq/Do-you-support-per-second-charging']"
+           data-toggle="collapse" class="card-header"
+           data-target="#Voice2" aria-expanded="true"
+           aria-controls="Voice2" title="Do you support per second charging?">
+            <h5>
+                Do you support "per second" charging?
+            </h5>
+        </a>
+        <div id="Voice2" class="collapse card-body">
+            <div>
+                We don't support "per second" charging. We only support per minute charging.
+            </div>
+        </div>
+    </div>
+</div>

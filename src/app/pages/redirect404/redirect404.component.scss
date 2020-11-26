@@ -1,0 +1,19 @@
+@import "vars";
+
+.alert {
+  span {
+    font-size: 1.1rem;
+  }
+}
+
+.nav {
+  font-weight: $semi-bold;
+
+  a {
+    color: $text-color;
+
+    &:hover {
+      color: $marketing_text_color;
+    }
+  }
+}

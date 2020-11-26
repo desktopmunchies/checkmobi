@@ -1,0 +1,36 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+.faq-content {
+  margin-bottom: 20px;
+
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    border: none;
+  }
+
+  .card-header {
+    color: $marketing_text_color;
+    background-color: $landing_bg_gray;
+    border-color: $border-color;
+    cursor: pointer;
+
+    h5 {
+      font-size: 1.05rem;
+    }
+
+    &:hover {
+      color: $cm_green;
+      text-decoration: underline;
+    }
+  }
+
+  .card-body {
+    padding: 0;
+    margin: 15px;
+  }
+}

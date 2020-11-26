@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="pricing-content text-center">
+        <div class="pricing-card">
+            <div class="row">
+                <div class="col-sm-12 text-center introduction">
+                    <h3 class="marketing-subtitle font-weight-semi-bold">
+                        <span *ngIf="permissions.canSignup()">
+                            New to CheckMobi? Get our 1$ Free Trial by signing in right now!
+                        </span>
+                        <span *ngIf="!permissions.canSignup() && selectedPlan">
+                            You are currently on selectedPlan.name CheckMobi subscription.
+                        </span>
+                    </h3>
+                    <div *ngIf="permissions.canSignup()">
+                        <a rel="nofollow" class="btn btn-warning btn-large bigger-button signup-button" href="/login.html#/signup">
+                            SIGN UP NOW
+                            <br>
+                            1$ FREE TRIAL
+                        </a>
+                    </div>
+                    <div class="marketing-description font-weight-semi-bold" *ngIf="permissions.canSignup()">
+                        To use CheckMobi platform, access all it's great features &amp; benefit of our outstanding
+                        support you need to purchase one of our subscription plans.
+                    </div>
+                </div>
+            </div>
+
+            <div class="plans-holder">
+                <div class="row">
+                        <div class="col-md-4 plan" *ngFor="let plan of subscriptionPlans, index as i">
+                            <div class="plan-header">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-6 col-md-offset-0 col-sm-offset-3">
+                                        <div class="d-none d-md-block">
+                                            <img height="130" src="{{'assets/images/pricing/plan' + i + '.png' }}" alt="{{plan.name}}">
+                                        </div>
+
+                                        <h3 class="marketing-subheader">
+                                            <i class="fa fa-check-circle current-subscription-icon"
+                                               uib-tooltip="This is your subscription."
+                                               *ngIf="plan.selected"></i>
+                                            {{ plan.name }}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="plan-header padding-top-10px padding-bottom-20px">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12 col-sm-6">
+                                        <div class="price">
+                                            <strong>{{ plan.prices.year / 12 }}$</strong>
+                                        </div>
+                                        <div class="font-weight-semi-bold">
+                                            per month, billed annually <br>
+                                            <span class="or">or</span><br>
+                                            {{ plan.prices.month | cmCurrency:0  }} billed monthly
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="plan-body">
+                                <div>
+                                    <button class="btn btn-success bigger-button buy-button"
+                                            (click)="selectPlan(plan)">
+                                        {{ plan.buttonText || ('BUY ' +  plan.name.replace("Business", "")) }}
+                                    </button>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li *ngFor="let item of plan.details">
+                                            <span [innerHTML]="item.text"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="pricing-bottom-spacer">
+                <div class="marketing-description margin-bottom-40px">
+                    <div class="margin-bottom-40px margin-top-40px">
+                        Subscriptions do not include any SMS messages or IVR Calls besides the initial one-time bonus credit.
+                        For SMS and IVR Call, you need to deposit credit after initial one-time bonus credit is used.
+                        <a [routerLink]="['/pricing/rates']" class="link">Click here for rates.</a>
+                    </div>
+                    <div *ngIf="!mainUser">In order to purchase any of the subscription models above you need to have a
+                        CheckMobi account.<br>
+                        <a class="login" href="/login.html#/signup">Create account</a> or <a class="login" href="/login.html">Login</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

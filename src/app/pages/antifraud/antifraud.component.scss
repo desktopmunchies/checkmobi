@@ -1,0 +1,82 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+.marketing-subtitle {
+  font-weight: $font-weight-bold;
+}
+
+section {
+  padding: 80px 0;
+}
+
+#Highlight {
+  padding: 0;
+  height: calc(100vh - 75px - 60px - 60px);
+  background-color: $landing_bg;
+  position: relative;
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    height: calc(50vh);
+  }
+
+  > div > div {
+    display: inline-block;
+  }
+
+  .highlight-border {
+    border-bottom: solid 5px $cm_green;
+    margin-right: 20px;
+    width: 80px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  h1 {
+    font-size: 4.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: $cm_green;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      font-size: 3.3rem;
+    }
+  }
+
+  .marketing-text {
+    font-size: 1.3rem;
+  }
+}
+
+.light-color {
+  color: $landing_white;
+  .marketing-text {
+    color: $landing_white;
+  }
+}
+
+.block-section {
+  background-color: $landing_bg;
+}
+
+.light-blue-section {
+  background-color: $landing_bg_light_blue;
+}
+
+  .dark-blue-section {
+    background-color: #02012d;
+    color: white;
+
+    .marketing-subtitle, .marketing-text, .marketing-section-title {
+      color: white;
+    }
+  }
+
+  .decide-section {
+
+  }
+
+  .restrict-section {
+
+  }
+

@@ -1,0 +1,216 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+/*
+NAVBAR
+*/
+
+nav.navbar {
+  background-color: $landing_bg;
+  height: $navbar_height;
+  color: $landing_white;
+  -webkit-backface-visibility: hidden;
+  padding: 0;
+  top: -1px;
+
+  .container {
+    position: relative;
+    @media (max-width: (map-get($grid-breakpoints, sm))) {
+      padding: 0 15px;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: $landing_white;
+  }
+
+  .main-logo {
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    left: 0;
+    margin-left: 15px;
+
+    img {
+      height: 35px;
+    }
+
+    @media (max-width: (map-get($grid-breakpoints, xl))) {
+      margin-bottom: 7px;
+      width: 30px;
+      overflow: hidden;
+      img {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: (map-get($grid-breakpoints, md)) - 1) {
+      display: block !important;
+      position: static;
+      margin: 12px 0;
+      width: 30px;
+      img {
+        max-width: none;
+      }
+    }
+  }
+
+  .get-started-button-holder {
+    display: inline-block;
+    width: 130px;
+    vertical-align: top;
+
+    .get-started-button {
+      width: 100%;
+    }
+
+    @media (max-width: (map-get($grid-breakpoints, md))) {
+      display: none;
+    }
+  }
+
+  .nav-item.dropdown {
+    &:hover {
+      .dropdown-menu {
+        display: block;
+      }
+    }
+  }
+
+  .dropdown-toggle {
+    &::after {
+      display: none;
+    }
+  }
+
+  .btn.get-started-button {
+    font-size: 1em;
+    max-width: 190px;
+    float: none;
+    vertical-align: top;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 14px;
+
+    @media (max-width: (map-get($grid-breakpoints, md))) {
+      margin: 12px;
+    }
+  }
+
+  .navbar-collapse {
+    background-color: $landing_bg;
+    border-bottom: solid 3px $landing_white;
+    height: $navbar_height;
+  }
+
+  ul.navbar-nav {
+    margin: 0;
+    float: right;
+
+    li {
+      a {
+        font-size: 12px;
+        border-bottom: solid 3px transparent;
+        color: $landing_white;
+        font-weight: bold;
+        padding: 22px 15px;
+        cursor: pointer;
+
+        &:focus {
+          background: none;
+        }
+
+        &:hover {
+          color: $landing_white;
+          border-bottom: solid 3px $cm_green;
+          background-color: transparent;
+        }
+
+        @media(max-width: map-get($grid-breakpoints, lg)) {
+          padding: 22px 10px;
+        }
+      }
+
+      &.active {
+        > a {
+          background-color: transparent;
+          border-bottom: solid 3px $cm_green;
+          color: $landing_white;
+
+          &:focus {
+            background: none;
+          }
+
+          &:hover, &:focus {
+            color: $landing_white;
+          }
+        }
+      }
+
+      .dropdown-menu {
+        margin-top: 0;
+        a {
+          color: $navbar-text-color;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-bottom-width: 1px;
+
+          &:hover {
+            color: $navbar-text-color;
+          }
+
+          @media (max-width: map-get($grid-breakpoints, md)) {
+            color: $landing_white;
+
+            &:hover {
+              color: $landing_white;
+            }
+          }
+        }
+
+        @media (max-width: map-get($grid-breakpoints, md) - 1) {
+          display: block !important;
+          background: transparent;
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+
+  #navbarMenuCollapse {
+    @media (max-width: (map-get($grid-breakpoints, md)) - 1) {
+      height: auto;
+
+      .navbar-nav {
+        width: 100%;
+        float: none !important;
+      }
+    }
+  }
+
+  @media (max-width: (map-get($grid-breakpoints, md))) {
+    position: static;
+    height: auto !important;
+    margin-bottom: 0;
+    min-height: $navbar_height;
+
+    .navbar-collapse.in, .navbar-collapse.collapsing {
+      max-height: none;
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
+    .navbar-collapse {
+      background-color: transparent;
+    }
+
+    @media(max-width: (map-get($grid-breakpoints, sm))) {
+      background-color: $landing_bg;
+      .navbar-collapse {
+        background-color: $landing_bg;
+      }
+    }
+  }
+}

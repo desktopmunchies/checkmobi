@@ -1,0 +1,19 @@
+<div class="pricing-container">
+    <div id="topBgHolder"></div>
+    <div class="container">
+        <h1 class="marketing-section-title text-center">Pricing guide</h1>
+
+        <div class="pricing-tabs-holder">
+            <ul class="nav nav-tabs pricing-tabs d-flex flex-row">
+                <li role="presentation" routerLinkActive="active" class="text-right col">
+                    <a [routerLink]="['/pricing/subscription-plans']">CheckMobi Subscription Plans</a>
+                </li>
+                <li role="presentation" routerLinkActive="active" class="text-left col">
+                    <a [routerLink]="['/pricing/rates']">SMS &amp; International Calling Rates</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+</div>

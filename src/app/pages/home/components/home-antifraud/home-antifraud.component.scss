@@ -1,0 +1,46 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+#AntiFraudSection {
+  background-color: $landing_bg_gray;
+  color: $landing_white;
+  padding: 80px 0;
+
+  @media (max-width: map-get($grid-breakpoints, md)) {
+    padding-top: 0;
+  }
+
+  .marketing-text {
+    color: $landing_white;
+  }
+
+  .anti-fraud-section {
+    background-image: url('/assets/images/landing/bg-antifraud.png');
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 570px;
+    margin: 0;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      background-image: none;
+      background-color: #185b92;
+      height: 300px;
+    }
+  }
+
+  .container {
+    > div {
+      padding-left: 80px;
+    }
+  }
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    .container {
+      > div {
+        padding-left: 0;
+      }
+    }
+  }
+}

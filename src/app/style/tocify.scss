@@ -1,0 +1,164 @@
+@import "vars";
+
+.tocify {
+  .tocify-subheader {
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -ms-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;
+  }
+
+  .tocify-header {
+
+    li.has-submenu {
+      cursor: pointer;
+
+      > a {
+        i {
+          width: 12px;
+          height: 12px;
+          position: relative;
+          display: inline-block;
+          float: right;
+          color: $marketing_text_color;
+          margin-left: 10px;
+          -webkit-transition: all 150ms ease-in-out;
+          -moz-transition: all 150ms ease-in-out;
+          -o-transition: all 150ms ease-in-out;
+          transition: all 150ms ease-in-out;
+        }
+      }
+
+      &.is-expanded {
+        > a {
+          i {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+    }
+
+    li.active, li.always-open, li.is-expanded {
+      > .tocify-subheader {
+        height: auto;
+      }
+    }
+  }
+}
+
+.tocify {
+  border: 1px solid #ddd;
+  background: #fff;
+  -webkit-border-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 0;
+  -moz-background-clip: padding;
+  border-radius: 0;
+  background-clip: padding-box;
+
+  > ul {
+    border: none;
+  }
+
+  > ul ul {
+    background: #fff;
+
+    li {
+      a {
+        padding-left: 30px;
+      }
+    }
+  }
+
+  ul ul ul li a {
+    padding-left: 40px
+  }
+
+  > ul:last-child {
+    border-bottom: 0
+  }
+
+  li {
+    border-top: 1px solid #f0f0f0;
+
+    a {
+      padding: 10px 15px;
+      color: $marketing_text_color;
+      cursor: pointer;
+
+      &:hover {
+        background: #fff;
+        color: $text_color;
+        text-decoration: none;
+      }
+    }
+
+    &.active {
+      a, a:hover {
+        color: $text-color;
+      }
+    }
+  }
+
+  .tocify-item.active > a {
+    position: relative;
+    background: #f6f6f6;
+    color: $text_color;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 14px;
+      right: -1px;
+      width: 0;
+      height: 0;
+      border-color: transparent #fff transparent transparent;
+      border-style: solid;
+      border-width: 6px
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 13px;
+      right: -1px;
+      margin-left: -2px;
+      width: 0;
+      height: 0;
+      border-color: transparent #ddd transparent transparent;
+      border-style: solid;
+      border-width: 7px;
+    }
+  }
+}
+
+.tocify.fixed {
+  position: fixed;
+  top: 15px;
+}
+
+//@media (max-width: 991px) {
+//  .tocify {
+//    top: 0;
+//    position: relative !important;
+//    margin-bottom: 30px
+//  }
+//
+//  .tocify .tocify-item.active > a:before, .tocify .tocify-item.active > a:after {
+//    display: none !important
+//  }
+//}
+
+.tocify-extend-page {
+  display: none !important
+}

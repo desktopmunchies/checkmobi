@@ -1,0 +1,37 @@
+@import "vars";
+
+.documentation-holder {
+  margin-bottom: 20px;
+
+  code {
+    word-break: break-all;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  pre {
+    background: none;
+    padding: 0;
+    border: none;
+  }
+
+  h1 {
+    font-weight: $light_bold;
+    font-size: $font-marketing-subtitle;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-weight: $semi_bold;
+    font-size: $font-marketing-subheader;
+  }
+
+  h3 {
+    b {
+      font-weight: $semi_bold;
+    }
+  }
+
+}

@@ -1,0 +1,146 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+$plan-margin: 65px;
+$plan-margin-small: 15px;
+
+.pricing-content {
+
+  padding: 0;
+
+  .bigger-button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+  }
+
+  .pricing-bottom-spacer {
+    margin-bottom: 60px;
+  }
+
+  .pricing-card {
+    @media (min-width: map-get($grid-breakpoints, sm)) {
+      margin-bottom: 60px;
+    }
+
+    .introduction {
+      > * {
+        margin: 20px 0 40px;
+      }
+    }
+
+    .btn.btn-warning.signup-button {
+      font-weight: $semi_bold;
+      background-image: url('/assets/images/pricing/subscription-button.png');
+      background-size: cover;
+      background-position: center;
+      color: $landing_white;
+    }
+
+    .plans-holder {
+      margin-top: 40px;
+
+      .plan {
+        padding: 0;
+        margin-bottom: 70px;
+
+        @media (min-width: map-get($grid-breakpoints, md)) {
+          margin-bottom: 50px;
+        }
+
+        .plan-header {
+          font-size: 16px;
+          border: none;
+
+          img {
+            margin: 20px 0 10px;
+          }
+
+          h3 {
+            margin: 20px 0 0;
+            font-weight: bold;
+          }
+
+          .or {
+            display: inline-block;
+            position: relative;
+            padding: 0 10px;
+
+            &:before {
+              content: '';
+              border-bottom: solid 1px #F4F3F3;
+              width: 70px;
+              display: block;
+              margin-top: 10px;
+              position: absolute;
+              margin-left: -30px;
+              z-index: -1;
+            }
+          }
+
+          .price {
+            font-size: 80px;
+            line-height: 80px;
+            font-weight: bold;
+            color: $text_color;
+            margin-bottom: 20px;
+          }
+        }
+
+        .plan-body {
+          margin-top: 60px;
+
+          .buy-button {
+            text-transform: uppercase;
+            margin: 20px 0;
+            min-width: 200px;
+            font-weight: bold;
+            border-radius: 10px;
+            font-size: 22px;
+          }
+
+          .title {
+            padding-bottom: 20px;
+            font-size: 18px;
+            border-bottom: solid 1px #F4F3F3;
+            margin-right: ($plan-margin - 10px);
+            text-align: left;
+            margin-top: 50px;
+            font-weight: bold;
+          }
+
+          ul {
+            list-style: none;
+            font-size: 14px;
+            padding: 0;
+            margin-left: 20px;
+            text-align: center;
+            font-weight: bold;
+
+            li {
+              margin-top: 30px;
+
+              @media (min-width: map-get($grid-breakpoints, md)) {
+                margin-top: 20px;
+              }
+            }
+          }
+        }
+
+        &:first-child, &:last-child {
+          .plan-header {
+            border: 0;
+          }
+        }
+
+        @media (min-width: map-get($grid-breakpoints, md)) {
+          .plan-header, .plan-body {
+
+            .title {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

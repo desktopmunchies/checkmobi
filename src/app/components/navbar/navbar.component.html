@@ -1,0 +1,77 @@
+<nav class="navbar navbar-nav navbar-expand-md sticky-top navbar-dark" id="navbar" role="navigation"
+[class]="{'transparent': transparentNavbar}">
+    <div class="container">
+        <a class="navbar-brand main-logo" [ngClass]="{'d-none': !showLogo}"
+           title="Home" [routerLink]="['/']"><img src="assets/images/logo.png" alt="CheckMobi Home"></a>
+
+        <div class="get-started-button-holder d-inline-block d-md-none" *ngIf="permissions.userChecked()">
+            <a href="/login.html" title="Login" *ngIf="!userExists"
+               class="btn btn-success get-started-button">Login</a>
+            <a href="/account.html" *ngIf="userExists"
+               class="btn btn-success get-started-button">Dashboard</a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenuCollapse"
+                aria-controls="navbarMenuCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span>
+                    <i class="fas fa-bars"></i>
+                </span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarMenuCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link dropdown-toggle" title="Products" [routerLink]="['/']"
+                       fragment="MissedCallProduct"
+                       id="navbarDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" title="Missed call verification" [routerLink]="['/']"
+                           fragment="MissedCallProduct">Missed call verification</a>
+                        <a class="dropdown-item" title="SMS verification" [routerLink]="['/']" fragment="SmsProduct">SMS
+                            verification</a>
+                        <a class="dropdown-item" title="IVR call verification" [routerLink]="['/']"
+                           fragment="VoiceCallProduct">IVR call verification</a>
+                        <a class="dropdown-item" title="Multiple Carrier Support" [routerLink]="['/']"
+                           fragment="MultipleCarriersSection">Multiple Carrier Support</a>
+                        <a class="dropdown-item" title="Remote config" [routerLink]="['/']" fragment="RemoteConfig">Remote
+                            config</a>
+                        <a class="dropdown-item" title="Messaging API" [routerLink]="['/']"
+                           fragment="ComplementarySection">Messaging API</a>
+                        <a class="dropdown-item" title="Voice API" [routerLink]="['/']" fragment="VoiceSection">Voice
+                            API</a>
+                        <a class="dropdown-item" title="AntiFraud" [routerLink]="['/']" fragment="AntiFraudSection">AntiFraud</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" title="API" [routerLink]="['/']" fragment="DevelopersSection">API</a>
+                </li>
+                <li class="nav-item">
+                    <a title="Secure" [routerLink]="['/']" fragment="SecureSection" class="nav-link">Secure</a></li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a title="AntiFraud" [routerLink]="['/anti-fraud']" class="nav-link">AntiFraud</a></li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" title="Pricing" [routerLink]="['/pricing']">Pricing</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" [routerLink]="['/pricing/subscription-plans']">Subscription</a>
+                        <a class="dropdown-item" [routerLink]="['/pricing/rates']">SMS &amp; IVR Call rates</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a title="Missed Call" class="nav-link" [routerLink]="['/missed-call']">Missed Call</a>
+                </li>
+                <li class="nav-item"><a title="Documentation" class="nav-link" [routerLink]="['/documentation']">Documentation</a></li>
+            </ul>
+
+            <div class="get-started-button-holder">
+                <span *ngIf="permissions.userChecked()">
+                    <a href="/login.html" title="Login" *ngIf="!userExists"
+                       class="btn btn-success get-started-button">Login</a>
+                    <a href="/account.html" *ngIf="userExists"
+                       class="btn btn-success get-started-button">Dashboard</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</nav>

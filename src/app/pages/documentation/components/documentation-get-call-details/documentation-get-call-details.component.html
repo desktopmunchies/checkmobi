@@ -1,0 +1,88 @@
+<h1>Call Status</h1>
+
+<p>
+    The Call status API let you to check the status of a call request.
+</p>
+
+<p>
+    <b>Location:</b> <code>GET https://api.checkmobi.com/v1/call/&213;id&215;</code>
+</p>
+
+<h3>Arguments</h3>
+
+<p>None</p>
+
+<h3>Request</h3>
+
+<b>Method:</b> <code class="margin-left-5px">GET</code><br>
+<b>URI:</b> <code class="margin-left-5px">https://api.checkmobi.com/v1/call/&213;id&215;</code><br>
+<b>HTTP headers:</b> <code class="margin-left-5px">Content-Type</code>, <code>Authorization</code>.
+More details <a [routerLink]="['/documentation/api-request']" class="link" target="_blank">here</a><br>
+<b>Body:</b> <span class="margin-left-5px">N/A</span>
+<br>
+<div class="margin-bottom-10px"><b>CURL Example:</b></div>
+<pre>
+    <code class="bash" [highlight]="curl"></code>
+</pre>
+
+
+<h3>Response</h3>
+
+<p>HTTP status code: <code>200</code></p>
+
+<pre>
+    <code class="json hljs-tag" [highlight]="json"></code>
+</pre>
+
+<h3>Response Attributes</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th width="100">Parameter</th>
+        <th width="100">Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td>request_date</td>
+        <td>integer</td>
+        <td>The date time as <a href="http://en.wikipedia.org/wiki/Unix_time" rel="noopener" class="link" target="_blank">UNIX timestamp</a>
+            when the request was placed</td>
+    </tr>
+
+    <tr>
+        <td>to</td>
+        <td>string</td>
+        <td>The destination number</td>
+    </tr>
+
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>A short description about carrier and country: for example: Orange - FR</td>
+    </tr>
+
+    <tr>
+        <td>duration_billed</td>
+        <td>integer</td>
+        <td>Represent the length of the call in seconds between answer and hangup</td>
+    </tr>
+
+    <tr>
+        <td>charged_amount</td>
+        <td>float</td>
+        <td>Total cost for the call based on charged_rate and duration</td>
+    </tr>
+
+    <tr>
+        <td>charged_rate</td>
+        <td>float</td>
+        <td>Charged rate per destination</td>
+    </tr>
+
+    </tbody>
+</table>

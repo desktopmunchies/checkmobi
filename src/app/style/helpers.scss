@@ -1,0 +1,74 @@
+@import "vars";
+
+.font-smaller {
+  font-size: .8rem;
+}
+
+.font-size-bigger-1 {
+  font-size: 1.1rem !important;
+}
+
+.font-size-bigger-2 {
+  font-size: 1.2rem !important;
+}
+
+.font-size-bigger-3 {
+  font-size: 1.3rem !important;
+}
+
+.text-cm-green {
+  color: $cm_green !important;
+}
+
+.font-weight-semi-bold {
+  font-weight: $semi_bold !important;
+}
+
+.gray9 {
+  color: $gray9 !important;
+}
+
+$margins: 0, 5px, 10px, 15px, 20px, 25px, 30px, 35px, 40px, 45px, 50px;
+@each $margin in $margins {
+
+  .margin-#{$margin} {
+    margin: $margin !important;
+  }
+
+  .padding-#{$margin} {
+    padding: $margin !important;
+  }
+
+  .margin-left-#{$margin} {
+     margin-left: $margin !important;
+   }
+
+  .padding-left-#{$margin} {
+    padding-left: $margin !important;
+  }
+
+  .margin-right-#{$margin} {
+    margin-right: $margin !important;
+  }
+
+  .padding-right-#{$margin} {
+    padding-right: $margin !important;
+  }
+
+  .margin-top-#{$margin} {
+    margin-top: $margin !important;
+  }
+
+  .padding-top-#{$margin} {
+    padding-top: $margin !important;
+  }
+
+  .margin-bottom-#{$margin} {
+    margin-bottom: $margin !important;
+  }
+
+  .padding-bottom-#{$margin} {
+    padding-bottom: $margin !important;
+  }
+}
+

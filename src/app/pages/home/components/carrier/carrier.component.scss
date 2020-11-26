@@ -1,0 +1,33 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+#SmsCallingSection{
+  background-color: white;
+  padding: $section_padding 0;
+
+  .marketing-subtitle {
+    color: $cm-green;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .marketing-text {
+    font-weight: 600;
+  }
+
+  .sub-section {
+    margin-top: 60px;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      margin-top: 0;
+    }
+
+    @media (max-width: map-get($grid-breakpoints, lg)) {
+      margin-top: 30px;
+
+      .image-holder {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

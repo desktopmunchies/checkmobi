@@ -1,0 +1,154 @@
+<div>
+    <h3>Missed Call</h3>
+
+    <div class="accordion card" id="Can-I-implement-just-reverse-CLI-using-your-sdk">
+        <a [routerLink]="['/faq/Can-I-implement-just-reverse-CLI-using-your-sdk']"
+           data-toggle="collapse" class="card-header" data-target="#collapseMissed1" aria-expanded="true"
+           aria-controls="collapseMissed1">
+            <h5>Can I implement just reverse CLI using your sdk?</h5>
+        </a>
+        <div id="collapseMissed1" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                You can, but we recommend implementing SMS as fallback for number verification. The reason is that
+                on some destinations Caller ID is not sent correctly. You have similar problems with SMS when it does
+                not reach or has 1h delays. The best way to do this is :
+                <ol>
+                    <li>
+                        Set Missed call (Reverse caller ID) as primary method of verification.
+                    </li>
+                    <li>
+                        Use SMS or/and IVR call as fallback if Missed Call fails.
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="How-does-Missed-Call-verification-work">
+        <a [routerLink]="['/faq/How-does-Missed-Call-verification-work']"
+           data-toggle="collapse" class="card-header" data-target="#collapseMissed2" aria-expanded="true"
+           aria-controls="collapseMissed2">
+            <h5>How does Missed Call verification work?</h5>
+        </a>
+        <div id="collapseMissed2" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                Missed Call uses the incoming number to deliver the pin that normally gets sent via SMS. See below
+                image:
+                <img class="margin-top-20px" src="assets/images/faq/faq-missed-call.png" alt="missed call">
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="Why-do-I-get-Insufficient-funds-when-trying-Missed-Call-if-verification-is-free">
+        <a [routerLink]="['/faq/Why-do-I-get-Insufficient-funds-when-trying-Missed-Call-if-verification-is-free']"
+
+           data-toggle="collapse" class="card-header" data-target="#collapseMissed3" aria-expanded="true"
+           aria-controls="collapseMissed3">
+            <h5>Why do I get "Insufficient funds" when trying "Missed Call" if verification is free?</h5>
+        </a>
+        <div id="collapseMissed3" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                Although a successful Missed Call verification does not cost anything, there are reasons when a Missed
+                Call
+                can cost you:
+                <ol>
+                    <li>
+                        If your user enters a wrong number and we call someone else, and that person answers the call.
+                    </li>
+                    <li>
+                        In case your user answers the missed call fast enough.
+                    </li>
+                    <li>
+                        If the call is rejected from the phone side and user has voice mail activated on call reject.
+                        (That is why
+                        it is very important when you implement Missed Call to always call our API to hangup the call
+                        from the server.
+                        Never from the client directly)
+                    </li>
+                </ol>
+                <br>
+                If a missed call is answered we will charge you the rate for 1 minute of calling on that destination.
+                See rates
+                <a class="link" target="_blank" [routerLink]="['/pricing']" fragment="Rates">here</a>.
+                <br><br>
+                Because we get charged, we need to charge you when these rare situations happen. That is why you need to
+                have
+                credit available in order to use Missed Call.
+                <br><br>
+                NOTE: We have a server setting to hangup fast from the server after the missed call is placed. This
+                can be adjusted to decrease the ringing time on the user’s phone.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="Does-the-call-come-from-the-same-number-or-random-numbers">
+        <a [routerLink]="['/faq/Does-the-call-come-from-the-same-number-or-random-numbers']"
+           data-toggle="collapse" class="card-header" data-target="#collapseMissed4" aria-expanded="true"
+           aria-controls="collapseMissed4">
+            <h5>Does the call come from the same number or random numbers?</h5>
+        </a>
+        <div id="collapseMissed4" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                Call comes from random numbers. We have many numbers that we change periodically.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="What-is-your-Missed-Call-coverage">
+        <a [routerLink]="['/faq/What-is-your-Missed-Call-coverage']"
+           data-toggle="collapse" class="card-header" data-target="#collapseMissed5" aria-expanded="true"
+           aria-controls="collapseMissed5">
+            <h5>What is your Missed Call coverage?</h5>
+        </a>
+        <div id="collapseMissed5" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                Missed Call coverage is global. We can use missed call in all countries where we have ability to send a
+                call.
+                To check if we support a certain country, see this link <a [routerLink]="['/pricing']" fragment="Rates"
+                                                                           class="link" target="_blank">
+                here</a>.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="Missed-Calls-do-not-arrive-on-the-device-what-can-be-the-problem">
+        <a [routerLink]="['/faq/Missed-Calls-do-not-arrive-on-the-device-what-can-be-the-problem']"
+
+           data-toggle="collapse" class="card-header" data-target="#collapseMissed6" aria-expanded="true"
+           aria-controls="collapseMissed6">
+            <h5>Missed Calls do not arrive on the device, what can be the problem?</h5>
+        </a>
+        <div id="collapseMissed6" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                Make sure your user entered correctly his number. If this is the case, then it could be a problem
+                of delay on the network side from us sending the call to reaching your user. This delay can have a
+                few seconds.<br>There is a setting in "General Settings" section within your application called:
+                "Missed Call ring time". This is the time it passes before we hangup the call, so your users
+                don't have time to answer it. Try increasing it and see if calls reach your desired destination.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion card" id="Calls-arrive-with-a-wrong-ID-How-can-I-fix-this">
+        <a [routerLink]="['/faq/Calls-arrive-with-a-wrong-ID-How-can-I-fix-this']"
+           data-toggle="collapse" class="card-header" data-target="#collapseMissed7" aria-expanded="true"
+           aria-controls="collapseMissed7">
+            <h5>Calls arrive with a wrong ID ? How can I fix this?</h5>
+        </a>
+        <div id="collapseMissed7" class="collapse card-body" aria-labelledby="headingOne">
+            <div>
+                If you correctly implemented missed call verification it means you have 2 things:
+                <ol>
+                    <li>
+                        SMS is set as fallback when Missed Call does not send correct Caller ID.
+                    </li>
+                    <li>
+                        You can turn on/off Missed Call on a certain destination.
+                    </li>
+                </ol>
+                In this case, just turn off Missed Call for that destination and open a ticket on
+                <a href="mailto:support@checkmobi.com" class="link">support[@]checkmobi.com</a>
+            </div>
+        </div>
+    </div>
+</div>

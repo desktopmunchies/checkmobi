@@ -1,0 +1,38 @@
+@import "vars";
+@import "bootstrap-helpers";
+
+.footer-contact {
+
+  h5 {
+    color: $cm_green;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  text-align: left;
+  border-top: solid 1px $border-color;
+  border-bottom: solid 1px $border-color;
+  padding: 20px 5px;
+  margin-bottom: 10px;
+
+  .form-control {
+    background: transparent;
+    border-color: $border-color;
+    color: white;
+    font-size: $font-size;
+  }
+
+  textarea {
+    height: 86px;
+    resize: none;
+  }
+
+  .send-button {
+    background-color: $warning;
+    color: $landing_white;
+    height: 86px;
+    text-align: center;
+    width: 100%;
+  }
+}
